@@ -1,0 +1,22 @@
+
+# to check if the server is working
+GET http://localhost:3000/health HTTP/1.1
+
+
+### GET tasks
+GET http://localhost:3000/v1/tasks HTTP/1.1
+
+
+### GET task by Id
+GET http://localhost:3000/v1/tasks/1 HTTP/1.1
+
+### GET projects
+GET http://localhost:3000/projects HTTP/1.1
+
+
+### GET project by Id
+GET http://localhost:3000/projects/1 HTTP/1.1
+
+
+### GET project's tasks
+GET http://localhost:3000/projects/1/tasks HTTP/1.1

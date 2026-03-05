@@ -1,0 +1,42 @@
+{
+	"name": "express-with-typescript",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"lint": "biome check --write .",
+		"dev": "dotenv -- nodemon "
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/osamaabdelshafy-1/express-with-typeScript.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/osamaabdelshafy-1/express-with-typeScript/issues"
+	},
+	"homepage": "https://github.com/osamaabdelshafy-1/express-with-typeScript#readme",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.5",
+		"@tsconfig/node22": "^22.0.5",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/jest": "^30.0.0",
+		"@types/morgan": "^1.9.10",
+		"@types/node": "^25.3.3",
+		"dotenv-cli": "^11.0.0",
+		"nodemon": "^3.1.14",
+		"ts-jest": "^29.4.6",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"cors": "^2.8.6",
+		"express": "^5.2.1",
+		"morgan": "^1.10.1"
+	}
+}

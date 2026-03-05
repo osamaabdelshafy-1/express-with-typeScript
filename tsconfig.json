@@ -1,0 +1,12 @@
+{
+	// Visit https://aka.ms/tsconfig to read more about this file
+	"extends": "@tsconfig/node22/tsconfig.json",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"types": ["node", "jest"],
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
+}
