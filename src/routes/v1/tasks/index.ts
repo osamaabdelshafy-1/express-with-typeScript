@@ -1,5 +1,5 @@
 import express, { type Router } from "express";
-import { getTask, listTasks } from "./controller";
+import { getTask, listTasks } from "./controller.js";
 
 const tasks: Router = express.Router();
 

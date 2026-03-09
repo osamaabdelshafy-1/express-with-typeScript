@@ -1,0 +1,57 @@
+| Prisma Attribute                              | What it does in Prisma                            | PostgreSQL Equivalent / Effect                           |
+| --------------------------------------------- | ------------------------------------------------- | -------------------------------------------------------- |
+| `@id`                                         | Marks the field as **primary key**                | `PRIMARY KEY`                                            |
+| `@default(value)`                             | Sets a **default value** for the column           | `DEFAULT value`                                          |
+| `@default(now())`                             | Sets current timestamp automatically              | `DEFAULT NOW()`                                          |
+| `@default(cuid())`                            | Generates unique string ID automatically          | `text` with unique string                                |
+| `@db.VarChar(n)`                              | Stores string with **max length n**               | `VARCHAR(n)`                                             |
+| `@db.Text`                                    | Stores long string, no length limit               | `TEXT`                                                   |
+| `@db.Date`                                    | Stores **only date (YYYY-MM-DD)**                 | `DATE`                                                   |
+| `@db.DateTime`                                | Stores **date + time (YYYY-MM-DD HH:MM:SS)**      | `TIMESTAMP`                                              |
+| `@updatedAt`                                  | Automatically updates timestamp **on row update** | `TIMESTAMP` + auto-update by Prisma                      |
+| `?` (optional)                                | Field can be **NULL** in DB                       | `NULL` column allowed                                    |
+| `@relation(fields: [...], references: [...])` | Creates **foreign key relationship**              | `FOREIGN KEY (fields) REFERENCES OtherTable(references)` |
+| `@@index([fields])`                           | Creates an **index** for faster queries           | `CREATE INDEX ... ON table(fields)`                      |
+| `@@map("table_name")`                         | Maps Prisma model to a **custom table name**      | `table_name` instead of default                          |
+
+
+
+
+
+
+
+
+
+
+
+// task model 
+
+model Task { 
+  id                String            @id @default(cuid())
+  user_id           String            @db.VarChar(36)
+  project_id        String?       
+  name              String        
+  description       String?           @db.Text 
+  due_date          DateTime?         @db.Date 
+  completed_on      DateTime         
+  created_at        DateTime          @default(now())
+  updated_at        DateTime          @updatedAt //last update or change on the row , the column value will be updated
+  project           Project?          @relation(fields: [project_id]  , references: [id])
+  @@index([user_id])
+  @@map("tasks")
+}
+
+
+
+model Project {
+  id                  String  @id @default(cuid()) 
+  user_id             String  @db.VarChar(36)
+  name                String 
+  description         String   @db.Text
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt 
+  tasks               Task[]
+
+  @@index([user_id])
+  @@map("projects")
+}
